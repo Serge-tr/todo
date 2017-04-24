@@ -39,6 +39,6 @@
     "webpack": "^1.12.13"
   },
   "devDependencies": {
-
+    "node-uuid": "^1.4.8"
   }
 }
