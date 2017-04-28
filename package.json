@@ -41,6 +41,6 @@
     "node-uuid": "^1.4.8"
   },
   "devDependencies": {
-
+    "deep-freeze-strict": "^1.1.1"
   }
 }
