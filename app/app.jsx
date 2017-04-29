@@ -1,8 +1,19 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var {Route, Router, IndexRoute, hashHistory} = require('react-router');
+let React = require('react'),
+    ReactDOM = require('react-dom');
+let {Provider} = require('react-redux');
+let {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
-var TodoApp = require('TodoApp');
+let TodoApp = require('TodoApp'),
+    actions = require('actions'),
+    store = require('configureStore').configure();
+
+store.subscribe(() => {
+    console.log('New state', store.getState());
+});
+
+store.dispatch(actions.addTodo('Clean your ass'));
+store.dispatch(actions.setSearchText('afjbvns'));
+store.dispatch(actions.toggleShowCompleted());
 
 // Load foundation
 require('style!css!foundation-sites/dist/css/foundation.min.css');
@@ -12,6 +23,8 @@ $(document).foundation();
 require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
-  <TodoApp/>,
+  <Provider store={store}>
+      <TodoApp/>
+  </Provider>,
   document.getElementById('app')
 );
